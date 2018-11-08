@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Максим
- *
- */
-module backpack {
-}

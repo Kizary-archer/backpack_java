@@ -1,26 +1,64 @@
 package backpack;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 class key {
-	private int m, n;
+	int m,n,SumCloseKey;
+	int[] ClosedKey;
+	int[] OpenKey;
 
-	private void InputClosedKey() {
-		System.out.println("Hello Java!");
+	public void GetOpenKey() {
+		Input();
+		CreateOpenKey();
 	}
+	private void CreateOpenKey() {
+		OpenKey = new int[ClosedKey.length];
+		for (int i=0; i<OpenKey.length;i++){
+			OpenKey[i] = ClosedKey[i] * n % m;
+		}
+		System.out.print(Arrays.toString(OpenKey));
+		
+	}
+	private void Input() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("enter closed key length");
+		ClosedKey = new int[in.nextInt()];
+		System.out.println("enter escalating closed key");
 
-	public void CreateOpenKey() {
-		
-		
-		System.out.println("input M");
-		Scanner a = new Scanner(System.in);
-		this.m = a.nextInt();
-		
-		System.out.println("input N");
-		Scanner b = new Scanner(System.in);
-		this.n = b.nextInt();
-		
-		
+		for (int i=0; i<ClosedKey.length;i++){
+			if(i==0){
+				System.out.println("enter value");
+				ClosedKey[i] = in.nextInt();
+			}
+			else
+			do{	
+			System.out.println("enter a value greater " + ClosedKey[i-1]);
+			ClosedKey[i] = in.nextInt();
+			}
+			while(ClosedKey[i-1]>=ClosedKey[i]);
+			SumCloseKey = SumCloseKey + ClosedKey[i];
+		}		
+		do{
+		System.out.println("enter a value M greater " + SumCloseKey);
+		m = in.nextInt();
+		}
+		while(m <= SumCloseKey);
+		System.out.println("M = " + m);
+		do{
+		System.out.println("enter N mutually simple with M");
+		n = in.nextInt();
+		}
+		while(gcdThing(m, n) != 1);
+		System.out.println("N = " + n);
+		scanner.close();
+
+}
+	private int gcdThing(int m, int n) { //наибольший общий делитель M и N
+		BigInteger v1 = BigInteger.valueOf(m);
+		BigInteger v2 = BigInteger.valueOf(n);
+		BigInteger gcd = v1.gcd(v2);
+		return gcd.intValue();
 	}
 
 }
