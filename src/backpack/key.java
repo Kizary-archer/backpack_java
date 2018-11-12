@@ -21,11 +21,9 @@ class key {
 		
 	}
 	private void Input() {
-		Scanner in = new Scanner(System.in);
-		System.out.println("enter closed key length");
-		ClosedKey = new int[in.nextInt()];
+		ClosedKey = new int[8];
 		System.out.println("enter escalating closed key");
-
+		Scanner in = new Scanner(System.in);
 		for (int i=0; i<ClosedKey.length;i++){
 			if(i==0){
 				System.out.println("enter value");
@@ -51,6 +49,7 @@ class key {
 		}
 		while(gcdThing(m, n) != 1);
 		System.out.println("N = " + n);
+		in.close();
 
 }
 	private int gcdThing(int m, int n) { //наибольший общий делитель M и N
