@@ -51,7 +51,6 @@ class key {
 		}
 		while(gcdThing(m, n) != 1);
 		System.out.println("N = " + n);
-		scanner.close();
 
 }
 	private int gcdThing(int m, int n) { //наибольший общий делитель M и N
