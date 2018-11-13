@@ -1,18 +1,26 @@
 package backpack;
 
-class encryption {
+final class encryption {
+ int[] EncMessage;
 
-		public void GetEncryption() {
-	byte val = 100;
-	int res = 0,p;
-	int[] Key = {1,2,3,4,5,6,7,8};
-	int i = Key.length-1;
-	for (int var : Key) {
-	   p =  val & (int)Math.pow(2,i);
-		if(p>0)
-		 res += var;
-		 i--;
+		public void GetEncryption(int[] Key,String str) {
+			char[] CharArray = str.toCharArray();
+			EncMessage = new int[CharArray.length];
+			int res;
+			int j = 0 ;
+			for (int valChar : CharArray) {
+				 System.out.println(Integer.toBinaryString(valChar));
+				 System.out.println(valChar);
+				 res = 0;
+			int i = Key.length-1;
+			for (int valKey : Key) {
+				 if((valChar & (int)Math.pow(2,i))>0)
+				  res += valKey;
+				  i--;
+			}
+			System.out.println(res);
+			EncMessage[j] = res;
+			j++;
+				}
 	}
-	System.out.print(res);
-		}
-	}
+}
