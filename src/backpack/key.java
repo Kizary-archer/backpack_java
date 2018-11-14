@@ -1,7 +1,8 @@
 package backpack;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.IntStream;
+import java.math.BigInteger;
 
 class key {
 	int m,n;
@@ -17,24 +18,25 @@ class key {
 		for (int i=0; i<OpenKey.length;i++){
 			OpenKey[i] = ClosedKey[i] * n % m;
 		}
-		System.out.print(Arrays.toString(OpenKey));
-		
 	}
 	private void Input() {
 		ClosedKey = new int[8];
+		int SumCloseKey = 0;
 		System.out.println("enter escalating closed key");
 		Scanner in = new Scanner(System.in);
 
 		System.out.println("enter value");
 		ClosedKey[0] = in.nextInt();
+		SumCloseKey += ClosedKey[0];
 		for (int i=1; i<ClosedKey.length;i++){
 			do{	
-			System.out.println("enter a value greater " + ClosedKey[i-1]);
+			System.out.println("enter a value"+i+" greater " + SumCloseKey);
 			ClosedKey[i] = in.nextInt();
+					
 			}
-			while(ClosedKey[i-1]>=ClosedKey[i]);
-		}
-		int SumCloseKey =IntStream.of(ClosedKey).sum();		
+			while(SumCloseKey+1>ClosedKey[i]);
+			SumCloseKey += ClosedKey[i];
+		}	
 		do{
 		System.out.println("enter a value M greater " + SumCloseKey);
 		m = in.nextInt();
@@ -49,7 +51,7 @@ class key {
 		System.out.println("N = " + n);
 		in.close();
 
-}
+	}
 	private int gcdThing(int m, int n) { //наибольший общий делитель M и N
 		BigInteger v1 = BigInteger.valueOf(m);
 		BigInteger v2 = BigInteger.valueOf(n);
