@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 class key {
-	int m,n,SumCloseKey;
+	int m,n;
 	int[] ClosedKey;
 	int[] OpenKey;
 
@@ -24,19 +24,17 @@ class key {
 		ClosedKey = new int[8];
 		System.out.println("enter escalating closed key");
 		Scanner in = new Scanner(System.in);
-		for (int i=0; i<ClosedKey.length;i++){
-			if(i==0){
-				System.out.println("enter value");
-				ClosedKey[i] = in.nextInt();
-			}
-			else
+
+		System.out.println("enter value");
+		ClosedKey[0] = in.nextInt();
+		for (int i=1; i<ClosedKey.length;i++){
 			do{	
 			System.out.println("enter a value greater " + ClosedKey[i-1]);
 			ClosedKey[i] = in.nextInt();
 			}
 			while(ClosedKey[i-1]>=ClosedKey[i]);
-			SumCloseKey = SumCloseKey + ClosedKey[i];
-		}		
+		}
+		int SumCloseKey =IntStream.of(ClosedKey).sum();		
 		do{
 		System.out.println("enter a value M greater " + SumCloseKey);
 		m = in.nextInt();
