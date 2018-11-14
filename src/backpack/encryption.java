@@ -1,6 +1,6 @@
 package backpack;
 
-final class encryption {
+ class encryption {
  int[] EncMessage;
 
 		public void GetEncryption(int[] Key,String str) {
@@ -21,6 +21,6 @@ final class encryption {
 			System.out.println(res);
 			EncMessage[j] = res;
 			j++;
-				}
+		}
 	}
 }

@@ -1,26 +1,23 @@
 package backpack;
 
-final class decryption {
- int[] EncMessage;
+ class decryption {
+ int[] DecMessage;
 
-		public void Getdecryption(int[] Key,String str) {
-			char[] CharArray = str.toCharArray();
-			EncMessage = new int[CharArray.length];
-			int res;
-			int j = 0 ;
-			for (int valChar : CharArray) {
-				 System.out.println(Integer.toBinaryString(valChar));
-				 System.out.println(valChar);
-				 res = 0;
-			int i = Key.length-1;
-			for (int valKey : Key) {
-				 if((valChar & (int)Math.pow(2,i))>0)
-				  res += valKey;
-				  i--;
-			}
-			System.out.println(res);
-			EncMessage[j] = res;
-			j++;
-				}
+		public void Getdecryption(int n, int m,int[]ClosedKey,int[] EncMessage) {
+
+			Decryption(GetBackN(n,m), m, EncMessage);
+			
+
+		}
+		public int GetBackN(int n,int m)
+		{
+		int i = 0;
+		while((n*i)%m != 1)
+			i++;
+			return i;
+		}
+		public void Decryption(int BackN,int m,int[] EncMessage)
+		{
+
+		}
 	}
-}
