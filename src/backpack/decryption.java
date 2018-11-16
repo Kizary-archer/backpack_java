@@ -1,7 +1,6 @@
 package backpack;
 
  class decryption {
- int[] DecMessage;
 
 		public String[] Getdecryption(int n, int m,int[]ClosedKey,int[] EncMessage) {
 

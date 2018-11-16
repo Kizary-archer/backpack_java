@@ -24,7 +24,6 @@ class key {
 		int SumCloseKey = 0;
 		System.out.println("enter escalating closed key");
 		Scanner in = new Scanner(System.in);
-
 		System.out.println("enter value");
 		ClosedKey[0] = in.nextInt();
 		SumCloseKey += ClosedKey[0];

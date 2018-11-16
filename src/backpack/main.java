@@ -1,16 +1,19 @@
 package backpack;
 
+import java.util.Scanner;
+
 class main {
 	
 	public static void main(String[] args) {
-		key OpenKey = new key(); 
-		OpenKey.GetOpenKey();
-		/*encryption enc = new encryption();
-		enc.GetEncryption();
+		key Keys = new key(); 
+		Keys.GetOpenKey();
+		encryption enc = new encryption();
+		System.out.print("enter message");
+		Scanner in = new Scanner(System.in);
+		enc.GetEncryption(Keys.OpenKey,in.nextLine());
+		in.close();
 		decryption dec = new decryption();
-		int[] ClosedKey = {2,3,6,13,27,52,104,210};
-		int[] EncMessage = {174,280,333};
-		System.out.println(dec.Getdecryption(333, 500,ClosedKey,EncMessage));*/
+		System.out.println(dec.Getdecryption(Keys.n,Keys.m,Keys.ClosedKey,enc.EncMessage));
 
 	}
 
